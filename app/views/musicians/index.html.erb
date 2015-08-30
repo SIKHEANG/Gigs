@@ -7,7 +7,7 @@
       <div class="row">
         <% if musician.origin_id == 1 %>
         <div class="col-md-5">
-
+          <%= image_tag musician.image, size: '200x200' %>
         </div>
         <div class="col-md-7">
           <h5><%= musician.name %></h5>
@@ -20,7 +20,7 @@
       </div>
       <% elsif musician.origin_id == 2 %>
         <div class="col-md-5">
-
+          <%= image_tag musician.image, size: '200x200' %>
         </div>
         <div class="col-md-7">
           <h5><%= musician.name %></h5>
