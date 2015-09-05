@@ -16,9 +16,9 @@ gem 'bootstrap-sass', '~> 3.3.5.1'
 gem 'paperclip-dropbox', '~> 1.3.2'
 gem 'figaro', '~> 1.1.1'
 gem 'pg_search', '~> 1.0.5'
+gem 'pg', '~> 0.18.2'
 
 group :production do
-  gem 'pg', '~> 0.18.2'
   gem 'rails_12factor', '~> 0.0.3'
 end
 
