@@ -16,8 +16,17 @@ class Event < ActiveRecord::Base
                       :path => ":style/:id_:filename"
     validates_attachment_content_type :image, content_type: /\Aimage\/.*\Z/
   end
-  def self.search(search)
 
-      where(["title LIKE ?","%#{search}%"])
-  end
+  include PgSearch
+    pg_search_scope :search, against: %i(
+                    title
+                    location
+                    genre
+                    venue
+                  ),
+                    using: { tsearch: {dictionary: 'English', any_word: true, prefix: true}}
+  # def self.search(search)
+
+  #     where(["title LIKE ?","%#{search}%"])
+  # end
 end
