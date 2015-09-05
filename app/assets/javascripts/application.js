@@ -38,5 +38,10 @@ $(function() {
     $('.alert').delay( 2000 ).slideUp( 500 );
 });
 
-
+$("#myModal").dialog();
+$("#myModal form").submit(function(){
+  // Do ajax call here to submit the form
+  $("#myModal").dialog('close');
+  return false;
+})
 

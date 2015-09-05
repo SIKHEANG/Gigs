@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
-  resources :registers
   devise_for :users
-  resources :events
+  resources :events do
+    collection do
+      get 'search'
+    end
+    resources :registers
+  end
+
   resources :musicians
   root 'welcome#index'
 

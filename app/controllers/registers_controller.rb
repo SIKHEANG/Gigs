@@ -1,5 +1,6 @@
 class RegistersController < ApplicationController
   before_action :set_register, only: [:show, :edit, :update, :destroy]
+  before_action :set_event
 
   # GET /registers
   # GET /registers.json
@@ -14,7 +15,7 @@ class RegistersController < ApplicationController
 
   # GET /registers/new
   def new
-    @register = Register.new
+    @register = @event.registers.new
   end
 
   # GET /registers/1/edit
@@ -24,11 +25,12 @@ class RegistersController < ApplicationController
   # POST /registers
   # POST /registers.json
   def create
-    @register = Register.new(register_params)
+    @event = Event.find(params[:event_id])
+    @register = @event.registers.new(register_params)
 
     respond_to do |format|
       if @register.save
-        format.html { redirect_to @register, notice: 'Register was successfully created.' }
+        format.html { redirect_to @event, notice: 'Register was successfully created.' }
         format.json { render :show, status: :created, location: @register }
       else
         format.html { render :new }
@@ -67,8 +69,11 @@ class RegistersController < ApplicationController
       @register = Register.find(params[:id])
     end
 
+    def set_event
+      @event = Event.find(params[:event_id])
+    end
     # Never trust parameters from the scary internet, only allow the white list through.
     def register_params
-      params.require(:register).permit(:name, :email)
+      params.require(:register).permit(:name, :email, :address, :phone)
     end
 end
