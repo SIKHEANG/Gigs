@@ -13,11 +13,10 @@
           <% if @event.user == current_user %>
           <%= link_to 'Edit', edit_event_path(@event), class: 'btn btn-info' %> |
           <%= link_to 'Delete', event_path, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-danger' %>
-          <% end %>
-          <% end %>
-
+          <% else %>
           <%= link_to 'Join Us',new_event_register_path(@event), :data => {:toggle => "modal"}, :data =>{:target =>"#myModal'"}, class: 'btn btn-success' %>
-
+          <% end %>
+          <% end %>
           <%= pluralize(@event.registers.count, 'Member') %>
           <h3>Description:</h3>
           <p><%= @event.description %></p>
