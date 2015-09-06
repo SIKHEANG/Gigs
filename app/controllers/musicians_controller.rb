@@ -7,7 +7,7 @@ class MusiciansController < ApplicationController
   # GET /musicians.json
   def index
     if params[:origin_id]
-      @musicians = Musician.where(origin_id: params[:origin_id])
+      @musicians = Musician.where(origin_id: params[:origin_id]).order('created_at DESC')
     else
       @musicians = Musician.all
     end

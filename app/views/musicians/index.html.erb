@@ -1,39 +1,50 @@
-<p id="notice"><%= notice %></p>
 <div class="container">
-  <%= link_to 'New Musician', new_musician_path %>
   <div class="row">
+  <div class="band-index">
+      <h1> Band</h1>
+  </div>
+
     <% @musicians.each do |musician| %>
-    <div class="col-md-6 col-sm-6">
+    <div class="col-md-6">
       <div class="row">
         <% if musician.origin_id == 1 %>
         <div class="col-md-5">
           <%= image_tag musician.image, size: '200x200' %>
         </div>
-        <div class="col-md-7 col-sm-7">
-          <h5><%= musician.name %></h5>
-          <p>Description:<%= musician.description %> </p>
+        <div class="col-md-7">
+          <h5>Brand Name: <%= musician.name %></h5>
+          <p>Description: <%= musician.description %> </p>
           <p>Genre: <%= musician.genre %></p>
           <p>Origin: <%= musician.origin.name %></p>
-          <%= link_to 'Show', musician, class: 'btn btn-link' %> |
-          <%= link_to 'Edit', edit_musician_path(musician), class: 'btn btn-link' %> |
-          <%= link_to 'Destroy', musician, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-link' %>
-      </div>
-      <% elsif musician.origin_id == 2 %>
-        <div class="col-md-5 col-sm-5">
-          <%= image_tag musician.image, size: '200x200' %>
+          <%= link_to 'Show', musician %>
         </div>
-        <div class="col-md-7 col-sm-7">
-          <h5><%= musician.name %></h5>
-          <p>Description:<%= musician.description %> </p>
-          <p>Genre: <%= musician.genre %></p>
-          <p>Origin: <%= musician.origin.name %></p>
-          <%= link_to 'Show', musician, class: 'btn btn-link' %> |
-          <%= link_to 'Edit', edit_musician_path(musician), class: 'btn btn-link' %> |
-          <%= link_to 'Destroy', musician, method: :delete, data: { confirm: 'Are you sure?' }, class: 'btn btn-link' %>
-      </div>
         <% end %>
       </div>
     </div>
     <% end %>
+<!-- Western Band -->
+
+    <% @musicians.each do |musician| %>
+    <div class="col-md-6">
+      <div class="row">
+        <% if musician.origin_id == 2 %>
+        <div class="col-md-5">
+          <%= image_tag musician.image, size: '200x200' %>
+        </div>
+        <div class="col-md-7">
+          <h5>Brand Name: <%= musician.name %></h5>
+          <p>Description: <%= musician.description %> </p>
+          <p>Genre: <%= musician.genre %></p>
+          <p>Origin: <%= musician.origin.name %></p>
+          <%= link_to 'Show', musician %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+    <% end %>
+
   </div>
+  <br>
+  <%= link_to "New Band", new_musician_path, class: "btn btn-default" %>
 </div>
+

@@ -1,33 +1,49 @@
-<h1>Listing Gigs</h1>
-<%= link_to 'New Event', new_event_path %>
-<table class="table table-splite">
-  <thead>
-    <tr>
-      <th>Image</th>
-      <th>Title</th>
-      <th>Description</th>
-      <th>Start On</th>
-      <th>Genre</th>
-      <th>Venue</th>
-      <th>Location</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @events.each do |event| %>
-      <tr>
-
-        <td><%= event.title %></td>
-        <td><%= truncate(event.description, length: 50) %></td>
-        <td><%= event.start_on %></td>
-        <td><%= event.genre %></td>
-        <td><%= event.venue %></td>
-        <td><%= event.location %></td>
-        <td><%= link_to 'Show', event %></td>
-        <td><%= link_to 'Edit', edit_event_path(event) %></td>
-        <td><%= link_to 'Destroy', event, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
+<div class="container">
+  <div class="row">
+    <div class="band-index">
+      <h1>Band</h1>
+      </div>
+    <% @musicians.each do |musician| %>
+    <div class="col-md-6">
+      <div class="row">
+        <% if musician.origin_id == 1 %>
+        <div class="col-md-5">
+          <%= image_tag musician.image, size: '200x200' %>
+        </div>
+        <div class="col-md-7">
+          <h5>Brand Name: <%= musician.name %></h5>
+          <p>Description: <%= musician.description %> </p>
+          <p>Genre: <%= musician.genre %></p>
+          <p>Origin: <%= musician.origin.name %></p>
+          <%= link_to 'Show', musician %>
+        </div>
+        <% end %>
+      </div>
+    </div>
     <% end %>
-  </tbody>
-</table>
+    <!-- Western Band -->
+
+    <% @musicians.each do |musician| %>
+    <div class="col-md-6">
+      <div class="row">
+        <% if musician.origin_id == 2 %>
+        <div class="col-md-5">
+          <%= image_tag musician.image, size: '200x200' %>
+        </div>
+        <div class="col-md-7">
+          <h5>Brand Name: <%= musician.name %></h5>
+          <p>Description: <%= musician.description %> </p>
+          <p>Genre: <%= musician.genre %></p>
+          <p>Origin: <%= musician.origin.name %></p>
+          <%= link_to 'Show', musician %>
+        </div>
+        <% end %>
+      </div>
+    </div>
+    <% end %>
+
+  </div>
+  <br>
+  <%= link_to "New Band", new_musician_path, class: "btn btn-default" %>
+</div>
+
